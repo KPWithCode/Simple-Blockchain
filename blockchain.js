@@ -6,8 +6,8 @@ class Blockchain {
     }
     // First block
     genesisBlock() {
-        const genesisData = '02/10/2020'
-        return new Block('Genesis Block', 0,genesisData)
+        const genesisDate = '02/10/2020'
+        return new Block('Genesis Block',0,genesisDate, '0')
     }
     // last block that was created
     latestBlock() {
@@ -15,6 +15,8 @@ class Blockchain {
 
     }
     addNewBlock(newBlock) {
+        // previous Hash
+        newBlock.previousHash = this.latestBlock().hash
         // position of new block
         newBlock.index = this.latestBlock().index + 1;
         // Creates hash for new block
